@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Labrianidis_2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int year;
+            Console.Write("Δώστε μια χρονιά για να εμφανιστεί η ημέρα που πέφτει το Πάσχα: ");
+            year=Int32.Parse(Console.ReadLine());
+            int a = year % 19;
+            int b = year % 4;
+            int c = year % 7;
+            int d = (19 * a + 16) % 30;
+            int f = (2 * b + 4 * c + 6 * d) % 7;
+            int p = d + f;
+            DateTime april3rd = new DateTime(year, 4, 3);
+            DateTime pasxa = april3rd.AddDays(p);
+            Console.WriteLine("Το Πάσχα του {0}, είναι στις {1}.", year, pasxa.ToShortDateString());
+            Console.ReadKey();
+        }
+    }
+}
